@@ -10,12 +10,12 @@ Offloading the sum and division-by-four to hardware demonstrates how custom digi
 
 ## Features
 
-- Custom Avalon-MM slave peripheral (`Tp_periph`) implemented in VHDL.
-- Four 32-bit memory-mapped input registers (`0x0`–`0x3`).
-- Synchronous register writes on rising clock edge when `chipselect = '1'` and `write = '1'`.
-- Hardware summation of all four 32-bit inputs (`S = D_0 + D_1 + D_2 + D_3`).
-- Hardware arithmetic average calculation (sign-extended right shift by 2 bits, `S / 4`) returned on read at address `0x0`.
-- Integration into a Nios II system using Platform Designer (Qsys) and top-level VHDL.
+- Custom Avalon-MM slave peripheral (`Tp_periph`) implemented in VHDL
+- Four 32-bit memory-mapped input registers (`0x0`–`0x3`)
+- Synchronous register writes on rising clock edge when `chipselect = '1'` and `write = '1'`
+- Hardware summation of all four 32-bit inputs (`S = D_0 + D_1 + D_2 + D_3`)
+- Hardware arithmetic average calculation (sign-extended right shift by 2 bits, `S / 4`) returned on read at address `0x0`
+- Integration into a Nios II system using Platform Designer (Qsys) and top-level VHDL
 
 ## Architecture
 
@@ -57,41 +57,15 @@ $$\text{Average} = \lfloor S / 4 \rfloor$$
 
 *(In VHDL: `(31 downto 30 => resultat(31)) & resultat(31 downto 2)` when `address = "00"`, and `(others => '0')` for other read addresses.)*
 
-## Software Example & Output
+## Results
 
-The following Nios II C program writes `0`, `0`, `30`, and `30` to the four registers using `TP_PERIPH_0_BASE` from `system.h`, then reads back the hardware-computed average from offset `0`:
+Running `avalon_Peripheral` on the target board over USB-Blaster (`jtaguart_0`) with inputs `0`, `0`, `30`, and `30` produces a sum of `60` and prints `hello from nios II` followed by `15` in the Nios II Console[cite: 2, 3].
 
-```c
-#include <io.h>
-#include "system.h"
-#include <stdio.h>
+![Nios II Eclipse editor and Nios II Console output showing "hello from nios II" and "15"](path/to/your/result-screenshot-1.png)
 
-int main()
-{
-    volatile int *moy_ptr = (int *)TP_PERIPH_0_BASE;
-    printf("hello from nios II \n");
-    int resultat = 0;
+![Nios II Eclipse editor and Nios II Console output confirming "15"](path/to/your/result-screenshot-2.png)
 
-    *moy_ptr = 00;
-    *(moy_ptr + 1) = 00;
-    *(moy_ptr + 2) = 30;
-    *(moy_ptr + 3) = 30;
-    resultat = *moy_ptr;
-
-    printf("%d \n", resultat);
-
-    return 0;
-}
-```[cite: 2]
-
-### Expected Nios II Console Output
-
-With inputs `0`, `0`, `30`, and `30`, the sum is `60` and the hardware average (`60 / 4`) is `15`:
-
-```text
-hello from nios II
-15
-```[cite: 2]
+*(Update `path/to/your/result-screenshot-1.png` and `path/to/your/result-screenshot-2.png` with the paths to your image files in your repo, e.g., `assets/result_1.png` and `assets/result_2.png`.)*
 
 ## Hardware and Software Tools
 
