@@ -61,7 +61,7 @@ $$\text{Average} = \lfloor S / 4 \rfloor$$
 
 ![Nios II Eclipse editor and Nios II Console output showing "hello from nios II" and "15"](Docs/Nois_II_console_test1.png)
 
-![Nios II Eclipse editor and Nios II Console output confirming "15"](Docs/Nois_II_console_test2.png)
+![Nios II Eclipse editor and Nios II Console output confirming "25"](Docs/Nois_II_console_test2.png)
 
 
 ## Hardware and Software Tools
