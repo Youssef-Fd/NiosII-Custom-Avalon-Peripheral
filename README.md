@@ -48,15 +48,11 @@ The peripheral exposes the following Avalon-MM signals:
 
 The peripheral stores four input values:
 
-\[
-D_0,\ D_1,\ D_2,\ D_3
-\]
+D_0, D_1, D_2, D_3
 
 The arithmetic operation is performed directly in hardware:
 
-\[
 S = D_0 + D_1 + D_2 + D_3
-\]
 
 The result is then made available through the read interface at address `0x0`, with the output formatted according to the VHDL implementation.
 
@@ -69,5 +65,3 @@ The result is then made available through the read interface at address `0x0`, w
 - **Processor:** Nios II
 - **Interface:** Avalon Memory-Mapped (Avalon-MM)
 ---
-
-*This project was developed as part of an FPGA and embedded systems design exercise.*
