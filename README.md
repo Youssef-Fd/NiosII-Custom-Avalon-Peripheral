@@ -59,13 +59,10 @@ $$\text{Average} = \lfloor S / 4 \rfloor$$
 
 ## Results
 
-Running `avalon_Peripheral` on the target board over USB-Blaster (`jtaguart_0`) with inputs `0`, `0`, `30`, and `30` produces a sum of `60` and prints `hello from nios II` followed by `15` in the Nios II Console[cite: 2, 3].
+![Nios II Eclipse editor and Nios II Console output showing "hello from nios II" and "15"](Docs/Nois_II_console_test1.png)
 
-![Nios II Eclipse editor and Nios II Console output showing "hello from nios II" and "15"](path/to/your/result-screenshot-1.png)
+![Nios II Eclipse editor and Nios II Console output confirming "15"](Docs/Nois_II_console_test2.png)
 
-![Nios II Eclipse editor and Nios II Console output confirming "15"](path/to/your/result-screenshot-2.png)
-
-*(Update `path/to/your/result-screenshot-1.png` and `path/to/your/result-screenshot-2.png` with the paths to your image files in your repo, e.g., `assets/result_1.png` and `assets/result_2.png`.)*
 
 ## Hardware and Software Tools
 
